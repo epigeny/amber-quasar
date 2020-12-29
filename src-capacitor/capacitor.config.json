@@ -1,0 +1,7 @@
+{
+  "appId": "org.obiba.amber.capacitor.app",
+  "appName": "Amber App",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "www"
+}
