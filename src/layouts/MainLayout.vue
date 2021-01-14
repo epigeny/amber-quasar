@@ -12,10 +12,8 @@
         />
 
         <q-toolbar-title>
-          Amber App
+          Amber
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
@@ -43,6 +41,7 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+
   </q-layout>
 </template>
 
@@ -51,46 +50,28 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
+    title: 'Web',
+    caption: 'OBiBa web site',
+    icon: 'favorite',
+    link: 'https://obiba.org'
+  },
+  {
     title: 'Docs',
-    caption: 'quasar.dev',
+    caption: 'Amber documentation',
     icon: 'school',
-    link: 'https://quasar.dev'
+    link: 'https://amberdoc.obiba.org'
   },
   {
     title: 'Github',
-    caption: 'github.com/quasarframework',
+    caption: 'github.com/obiba',
     icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    link: 'https://github.com/obiba'
   },
   {
     title: 'Forum',
-    caption: 'forum.quasar.dev',
+    caption: 'OBiBa users group',
     icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    link: 'https://groups.google.com/d/forum/obiba-users'
   }
 ]
 
