@@ -24,6 +24,30 @@
       content-class="bg-grey-1"
     >
       <q-list>
+        <q-item to="/" exact>
+          <q-item-section avatar>
+            <q-icon name="home" />
+          </q-item-section>
+          <q-item-section>
+            Home
+          </q-item-section>
+        </q-item>
+        <q-item to="/profile" exact>
+          <q-item-section avatar>
+            <q-icon name="face" />
+          </q-item-section>
+          <q-item-section>
+            Profile
+          </q-item-section>
+        </q-item>
+        <q-item to="/login" exact>
+          <q-item-section avatar>
+            <q-icon name="exit_to_app" />
+          </q-item-section>
+          <q-item-section>
+            Disconnect
+          </q-item-section>
+        </q-item>
         <q-item-label
           header
           class="text-grey-8"
@@ -53,7 +77,7 @@ const linksData = [
     title: 'Web',
     caption: 'OBiBa web site',
     icon: 'favorite',
-    link: 'https://obiba.org'
+    link: 'https://www.obiba.org'
   },
   {
     title: 'Docs',
