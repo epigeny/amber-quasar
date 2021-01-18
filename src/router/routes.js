@@ -12,7 +12,7 @@ const routes = [
     path: '/form',
     component: () => import('layouts/FormLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Form.vue') }
+      { path: ':id', component: () => import('pages/Form.vue') }
     ]
   },
   {

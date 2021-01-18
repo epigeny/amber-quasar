@@ -1,5 +1,5 @@
 <template>
-  <q-item clickable :to="link" v-ripple>
+  <q-item clickable :to="link + '/' + id" v-ripple>
     <q-item-section avatar top>
       <q-avatar :icon="icon" :color="color" text-color="white" />
     </q-item-section>
@@ -21,6 +21,11 @@
 export default {
   name: 'QuestionnaireItem',
   props: {
+    id: {
+      type: String,
+      required: true
+    },
+
     title: {
       type: String,
       required: true
