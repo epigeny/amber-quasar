@@ -4,7 +4,7 @@
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
         <q-toolbar-title>
-          Form
+          {{ form.title }}
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
@@ -15,6 +15,7 @@
 
     <q-footer elevated class="bg-grey-8 text-white">
       <q-toolbar>
+      <q-btn class='q-mt-lg' color='primary' label='Submit' icon-right='send' @click='submit()'/>
         <q-toolbar-title>
         </q-toolbar-title>
       </q-toolbar>
@@ -24,6 +25,27 @@
 
 <script>
 export default {
-  name: 'FormLayout'
+  name: 'FormLayout',
+  computed: {
+    form: function () {
+      const formObj = this.$store.getters['forms/formById'](this.$route.params.id)
+      return JSON.parse(JSON.stringify(formObj))
+    },
+    formValue: {
+      get () {
+        return this.$store.getters['forms/formValue']
+      }
+    }
+  },
+  methods: {
+    submit () {
+      this.$ncformValidate('amber-form').then(data => {
+        if (data.result) {
+          console.log(this.formValue)
+          // do what you like to do
+        }
+      })
+    }
+  }
 }
 </script>

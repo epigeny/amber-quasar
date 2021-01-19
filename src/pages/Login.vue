@@ -9,6 +9,13 @@
             size="md" @click="auth('facebook')" >
         </q-btn>
     </p>
+    <p class="q-pt-lg">
+        <q-btn
+            color="primary"
+            icon="fab fa-google" label="Login with Google"
+            size="md" @click="auth('google')" >
+        </q-btn>
+    </p>
     </div>
   </q-page>
 </template>
@@ -18,8 +25,10 @@ export default {
   name: 'Login',
   methods: {
     auth (network) {
-      this.$hello(network).login({ scope: 'friends' })
+      this.$hello(network).login()
         .then(() => {
+          // load the user's data
+          this.$store.dispatch('forms/loadForms')
           this.$router.push('/')
         })
     }

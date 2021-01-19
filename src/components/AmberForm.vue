@@ -1,9 +1,6 @@
 <template>
     <div>
-        <ncform :form-schema='formObj.form' form-name='amber-form' v-model='formObj.form.value' @submit='submit()' @change='onChange'></ncform>
-        <q-btn class='q-mt-lg q-mr-md' color='secondary' label='Previous' icon='chevron_left' @click='previous()'/>
-        <q-btn class='q-mt-lg q-mr-md' color='secondary' label='Next' icon-right='chevron_right' @click='next()'/>
-        <q-btn class='q-mt-lg' color='primary' label='Submit' icon-right='send' @click='submit()'/>
+        <ncform :form-schema='formObj.form' form-name='amber-form' v-model='formObj.form.value' @change='onChange'></ncform>
     </div>
 </template>
 
@@ -17,20 +14,7 @@ export default {
   },
   methods: {
     onChange ({ paths, itemValue, formValue, oldItemValue }) {
-    },
-    submit () {
-      this.$ncformValidate('amber-form').then(data => {
-        if (data.result) {
-          console.log(this.formObj.form.value)
-          // do what you like to do
-        }
-      })
-    },
-    next () {
-      this.formObj.form.value._page = this.formObj.form.value._page + 1
-    },
-    previous () {
-      this.formObj.form.value._page = this.formObj.form.value._page - 1
+      this.$store.dispatch('forms/storeFormValue', formValue)
     }
   }
 }
