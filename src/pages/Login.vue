@@ -23,13 +23,15 @@
 <script>
 export default {
   name: 'Login',
+  mounted () {
+    this.$store.dispatch('profile/storeRealm', undefined)
+  },
   methods: {
     auth (network) {
-      this.$hello(network).login()
+      this.$hello(network).login({ scope: 'email' })
         .then(() => {
-          // load the user's data
-          this.$store.dispatch('forms/loadForms')
-          this.$router.push('/')
+          this.$store.dispatch('profile/storeRealm', network)
+          this.$router.push('/loading')
         })
     }
   }

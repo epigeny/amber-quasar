@@ -35,6 +35,16 @@ export default {
       get () {
         return this.$store.getters['forms/formValue']
       }
+    },
+    realm: {
+      get () {
+        return this.$store.getters['profile/realm']
+      }
+    }
+  },
+  mounted () {
+    if (this.realm === undefined) {
+      this.$router.push('/login')
     }
   },
   methods: {

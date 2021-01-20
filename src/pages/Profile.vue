@@ -4,6 +4,7 @@
     <div v-if="profile.id">
       <p><img :src="profile.picture" ></p>
       <p>{{profile.name}}</p>
+      <p>{{profile.email}}</p>
     </div>
     <div v-else>
         <div class="q-title">No profile</div>
@@ -15,24 +16,11 @@
 <script>
 export default {
   name: 'Profile',
-  data () {
-    return {
-      profile: {}
-    }
-  },
-  mounted () {
-    this.getProfile('facebook')
-  },
-  methods: {
-    getProfile (network) {
-      if (this.$hello.getAuthResponse(network) == null) {
-        return
+  computed: {
+    profile: {
+      get () {
+        return this.$store.getters['profile/profile']
       }
-      this.$hello(network).api('me')
-        .then((res) => {
-          console.log(res)
-          this.profile = res
-        })
     }
   }
 }

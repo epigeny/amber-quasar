@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import forms from './module-forms'
+import profile from './profile'
+import forms from './forms'
 
 Vue.use(Vuex)
 
@@ -17,7 +18,8 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      forms
+      forms,
+      profile
     },
 
     // enable strict mode (adds overhead!)

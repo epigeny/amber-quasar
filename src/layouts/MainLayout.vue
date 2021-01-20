@@ -55,7 +55,7 @@
           Essential Links
         </q-item-label>
         <EssentialLink
-          v-for="link in essentialLinks"
+          v-for="link in links"
           :key="link.title"
           v-bind="link"
         />
@@ -72,40 +72,29 @@
 <script>
 import EssentialLink from 'components/EssentialLink.vue'
 
-const linksData = [
-  {
-    title: 'Web',
-    caption: 'OBiBa web site',
-    icon: 'favorite',
-    link: 'https://www.obiba.org'
-  },
-  {
-    title: 'Docs',
-    caption: 'Amber documentation',
-    icon: 'school',
-    link: 'https://amberdoc.obiba.org'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/obiba',
-    icon: 'code',
-    link: 'https://github.com/obiba'
-  },
-  {
-    title: 'Forum',
-    caption: 'OBiBa users group',
-    icon: 'record_voice_over',
-    link: 'https://groups.google.com/d/forum/obiba-users'
-  }
-]
-
 export default {
   name: 'MainLayout',
   components: { EssentialLink },
   data () {
     return {
-      leftDrawerOpen: false,
-      essentialLinks: linksData
+      leftDrawerOpen: false
+    }
+  },
+  computed: {
+    realm: {
+      get () {
+        return this.$store.getters['profile/realm']
+      }
+    },
+    links: {
+      get () {
+        return this.$store.getters['forms/links']
+      }
+    }
+  },
+  mounted () {
+    if (this.realm === undefined) {
+      this.$router.push('/login')
     }
   }
 }
