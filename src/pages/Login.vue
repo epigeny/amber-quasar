@@ -2,20 +2,34 @@
   <q-page class='flex flex-center'>
     <div class="text-center">
     <img src="../assets/amber-logo-full.svg" width="130em" />
-    <p class="q-pt-lg">
+
+    <div class="q-pt-md q-pb-md">
+      <q-form class="q-gutter-y-md column">
+        <q-input v-model="identifier" label="User name or email" />
+        <q-input v-model="secret" type="password" label="Password" />
+        <q-btn
+          color="primary"
+          label="Login"
+          size="md" @click="auth()" >
+        </q-btn>
+      </q-form>
+    </div>
+    <q-separator />
+
+    <div class="q-pt-md q-pb-md">
+      <div class="q-gutter-y-md column">
         <q-btn
             color="primary"
             icon="fab fa-facebook-square" label="Login with Facebook"
             size="md" @click="auth('facebook')" >
         </q-btn>
-    </p>
-    <p class="q-pt-lg">
         <q-btn
             color="primary"
             icon="fab fa-google" label="Login with Google"
             size="md" @click="auth('google')" >
         </q-btn>
-    </p>
+      </div>
+    </div>
     </div>
   </q-page>
 </template>
@@ -26,13 +40,34 @@ export default {
   mounted () {
     this.$store.dispatch('profile/storeRealm', undefined)
   },
+  data () {
+    return {
+      identifier: '',
+      secret: ''
+    }
+  },
   methods: {
     auth (network) {
-      this.$hello(network).login({ scope: 'email' })
-        .then(() => {
-          this.$store.dispatch('profile/storeRealm', network)
-          this.$router.push('/loading')
-        })
+      if (network) {
+        this.$hello(network).login({ scope: 'email' })
+          .then(() => {
+            this.$store.dispatch('profile/storeRealm', network)
+          })
+          .then(() => {
+            this.$router.push('/loading')
+          })
+      } else {
+        this.$store.dispatch('profile/storeRealm', 'amber')
+          .then(() => {
+            this.$store.dispatch('profile/storeCredentials', {
+              identifier: this.identifier,
+              secret: this.secret
+            })
+          })
+          .then(() => {
+            this.$router.push('/loading')
+          })
+      }
     }
   }
 }

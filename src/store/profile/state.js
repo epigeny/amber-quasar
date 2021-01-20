@@ -4,6 +4,7 @@ export default function () {
     profile: {
       name: 'anonymous'
     },
-    realm: undefined
+    realm: undefined,
+    credentials: undefined
   }
 }
