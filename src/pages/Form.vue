@@ -1,15 +1,16 @@
 <template>
-  <q-page class='q-pa-sm'>
-    <p>{{ form.description }}</p>
-    <amber-form v-bind:formObj="form"/>
+  <q-page class="q-pa-md">
+    <h5 class="q-mt-sm q-mb-sm q-ml-md">{{ form.title }}</h5>
+    <p class="text-weight-light q-ml-md">{{ form.description }}</p>
+    <nc-form v-bind:formObj="form"/>
   </q-page>
 </template>
 
 <script>
-import AmberForm from 'src/components/AmberForm.vue'
+import NcForm from 'src/components/NcForm.vue'
 
 export default {
-  components: { AmberForm },
+  components: { NcForm },
   name: 'PageForm',
   computed: {
     form: function () {

@@ -2,3 +2,13 @@
 .hidden-input .ncform-input {
     display: none;
 }
+
+.ncform-radio .el-radio {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.el-row > [class*=el-col-] {
+    padding: 10px !important;
+}
